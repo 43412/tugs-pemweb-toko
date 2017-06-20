@@ -72,7 +72,7 @@ class userClass {
       }
 
       $Koneksi->close();
-        header("location:coba.php");
+        header("location:register.html");
     }
     function hapustoko(){
       include("koneksi.php");
