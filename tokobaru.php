@@ -126,18 +126,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="categories">
 				  <ul>
 				  	<h3>Categories</h3>
-				      <li><a href="#">Mobile Phones</a></li>
-				      <li><a href="#">Desktop</a></li>
-				      <li><a href="#">Laptop</a></li>
-				      <li><a href="#">Accessories</a></li>
-				      <li><a href="#">Software</a></li>
-				       <li><a href="#">Sports &amp; Fitness</a></li>
-				       <li><a href="#">Footwear</a></li>
-				       <li><a href="#">Jewellery</a></li>
-				       <li><a href="#">Clothing</a></li>
-				       <li><a href="#">Home Decor &amp; Kitchen</a></li>
-				       <li><a href="#">Beauty &amp; Healthcare</a></li>
-				       <li><a href="#">Toys, Kids &amp; Babies</a></li>
+						<?php
+						include("koneksi.php");
+						$result   = mysqli_query($Koneksi, "select DISTINCT kategori FROM barang ");
+						if (!$result) {
+						die(mysqli_error($Koneksi));
+						}
+						else {
+							$row_cnt = $result->num_rows;
+							if ($row_cnt > 0){
+								$count = 0;
+								while ($row = $result->fetch_assoc()){
+
+										 echo "<li><a href='kategori.php?kategori={$row['kategori']}'><h2>{$row['kategori']}</h2></a></li>";
+								}
+							}
+
+					}
+						?>
 				  </ul>
 				</div>
 	  	     </div>
