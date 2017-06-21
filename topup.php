@@ -10,7 +10,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 </head>
@@ -22,16 +22,30 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
 			</div>
 			<div class="account_desc">
-				<ul>
-					<li><a href="register.html">Register</a></li>
-					<li><a href="login.html">Login</a></li>
-				</ul>
+        <?php
+        session_start();
+
+        if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+          $sesi = $_SESSION['user'];
+     echo ('selamat datang, '.$sesi);
+     echo "<a href='logout.php'> <button type='button' class='btn btn-default btn-sm'>
+          <span class='glyphicon glyphicon-log-out'></span> Log out
+        </button> </a>";
+
+      }
+      else {
+        echo "<ul>
+					<li><a href='register.php'>Register</a></li>
+					<li><a href='login.php'>Login</a></li>
+				</ul>";
+      }
+         ?>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				<a href="index.php"><img src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="cart">
 			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
@@ -51,7 +65,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					obj.dd.on('click', function(event){
 						$(this).toggleClass('active');
 						event.stopPropagation();
-					});	
+					});
 				}
 			}
 
@@ -72,9 +86,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li><a href="index.html">Home</a></li>
-			    	<li class="active"><a href="topup.html">Top Up</a></li>
-			    	<li><a href="contact.html">Contact Us</a></li>
+			    	<li><a href="index.php">Home</a></li>
+			    	<li class="active"><a href="topup.php">Top Up</a></li>
+			    	<li><a href="contact.php">Contact Us</a></li>
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
@@ -84,12 +98,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	     		</form>
 	     	</div>
 	     	<div class="clear"></div>
-	     </div>	     	
+	     </div>
    </div>
  <div class="main">
     <div class="content">
     	<div class="section group">
-			</div>			
+        <table>
+  				<br>
+          <?php
+          if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+            echo "<form action='topup-config.php' role='form' class='form-horizontal' method='post'>
+    				<tr><td>Masukkan jumlah top-up <br></td><td><input name='isisaldo' type='text' value='' size='33' maxlength='30' /></td></tr>
+    				<tr><td>&nbsp</td><td>&nbsp</td></tr>
+    				<tr><td></td><td><input value='Top-Up' type='submit'></td></tr>
+    				</form>";
+          }
+          else {
+            echo "Silahkan Login Dahulu";
+          }
+           ?>
+
+
+  			</table>
+			</div>
     </div>
  </div>
 </div>
@@ -99,12 +130,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		   </div>
     </div>
    <script type="text/javascript">
-		$(document).ready(function() {			
+		$(document).ready(function() {
 			$().UItoTop({ easingType: 'easeOutQuart' });
-			
+
 		});
 	</script>
     <a href="#" id="toTop"><span id="toTopHover"> </span></a>
 </body>
 </html>
-

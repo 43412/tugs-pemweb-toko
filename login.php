@@ -40,10 +40,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
 			</div>
 			<div class="account_desc">
-				<ul>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="login.php">Login</a></li>
-				</ul>
+				<?php
+        session_start();
+
+        if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+          $sesi = $_SESSION['user'];
+     echo ('selamat datang, '.$sesi);
+     echo "<a href='logout.php'> <button type='button' class='btn btn-default btn-sm'>
+          <span class='glyphicon glyphicon-log-out'></span> Log out
+        </button> </a>";
+
+      }
+      else {
+        echo "<ul>
+					<li><a href='register.php'>Register</a></li>
+					<li><a href='login.php'>Login</a></li>
+				</ul>";
+      }
+         ?>
 			</div>
 			<div class="clear"></div>
 		</div>
