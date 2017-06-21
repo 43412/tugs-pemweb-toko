@@ -200,7 +200,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
           <?php
           include("koneksi.php");
-          
+
   				$result   = mysqli_query($Koneksi, "select * FROM barang LIMIT 4");
   				if (!$result) {
       		die(mysqli_error($Koneksi));
@@ -211,7 +211,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
   						$count = 0;
   						while ($row = $result->fetch_assoc()){
   			   		echo "<div class='grid_1_of_4 images_1_of_4'>
-      					 <a href='preview.php'><img src='images/feature-pic1.jpg' alt='' /></a>
+      					 <a href='preview.php'><img src='' alt='' /></a>
       					 <h2>{$row['nama']}</h2>
       					<div class='price-details'>
       				       <div class='price-number'>
