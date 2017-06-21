@@ -221,7 +221,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       									<h4><a href='beli.php?={$row['id']}'>Add to Cart</a></h4>
       							     </div>
       							 <div class='clear'></div>
-      					</div>";
+      					</div>
+                </div>";
   						}
   					}
 

@@ -150,7 +150,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<?php
 
 				$shop = $_GET["toko"];
-				echo $shop;
 				echo "<br><br><br>Jual Barang<br>
 				<table>
 					<br>
