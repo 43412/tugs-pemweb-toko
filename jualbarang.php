@@ -104,9 +104,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li><a href="index.html">Home</a></li>
-			    	<li><a href="topup.html">Top Up</a></li>
-			    	<li><a href="contact.html">Contact Us</a></li>
+			    	<li><a href="topup.php">Top Up</a></li>
+            <li><a href="toko.php">Toko</a></li>
+			    	<li><a href="contact.php">Contact Us</a></li>
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
