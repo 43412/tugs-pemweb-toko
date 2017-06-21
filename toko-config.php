@@ -5,13 +5,13 @@ class toko {
       session_start();
       $namatoko = $_POST['namatoko'];
       $result   = mysqli_query($Koneksi, "select * from toko");
-      $row = mysql_fetch_object( $result );
-      $int = $row->num_rows;
+      $int = mysqli_num_rows($result);
       $total = (int)$int;
+      $final = $total+1;
       $pemilik = $_SESSION['user'];
       echo "<script type='text/javascript'>alert($pemilik);</script>";
       $sql = "INSERT INTO toko (kode, namatoko, pemilik)
-      VALUES ('$total+1', '$namatoko', '$pemilik')";
+      VALUES ('$final', '$namatoko', '$pemilik')";
       if ($Koneksi->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('Anda berhasil menambahkan toko');</script>";
       } else {
@@ -28,11 +28,12 @@ class toko {
       $stok = $_POST['stok'];
       $kategori = $_POST['kategori'];
       $result   = mysqli_query($Koneksi, "select * from barang");
-      $row = mysql_fetch_object( $result );
-      $total = $row->num_rows+1;
+      $int = mysqli_num_rows($result);
+      $total = (int)$int;
+      $final = $total+1;
       $penjual = $_SESSION["user"];
       $sql = "INSERT INTO barang (id, nama, kategori, stok, penjual, toko, harga)
-      VALUES ('$total', '$namabarang', '$kategori', '$stok', '$penjual', '$namatoko', '$harga')";
+      VALUES ('$final', '$namabarang', '$kategori', '$stok', '$penjual', '$namatoko', '$harga')";
       if ($Koneksi->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('Anda berhasil menambahkan barang');</script>";
       } else {
