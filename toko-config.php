@@ -2,14 +2,16 @@
 class toko {
     function __construct() {
       include("koneksi.php");
+      session_start();
       $namatoko = $_POST['namatoko'];
       $result   = mysqli_query($Koneksi, "select * from toko");
       $row = mysql_fetch_object( $result );
-      $total = $row->num_rows+1;
-      $pemilik = $_SESSION["user"];
-
+      $int = $row->num_rows;
+      $total = (int)$int;
+      $pemilik = $_SESSION['user'];
+      echo "<script type='text/javascript'>alert($pemilik);</script>";
       $sql = "INSERT INTO toko (kode, namatoko, pemilik)
-      VALUES ('$total', '$namatoko', '$pemilik')";
+      VALUES ('$total+1', '$namatoko', '$pemilik')";
       if ($Koneksi->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('Anda berhasil menambahkan toko');</script>";
       } else {
@@ -17,10 +19,10 @@ class toko {
       }
 
       $Koneksi->close();
-        header("location:userPage.php");
+        header("location:toko.php");
     }
 
-    function tambahitem (){
+    function tambahitem ($namatoko){
       include("koneksi.php");
       $namabarang = $_POST['namabarang'];
       $stok = $_POST['stok'];
@@ -29,17 +31,17 @@ class toko {
       $row = mysql_fetch_object( $result );
       $total = $row->num_rows+1;
       $penjual = $_SESSION["user"];
-      $toko = $_COOKIE["toko"];
       $sql = "INSERT INTO barang (id, nama, kategori, stok, penjual, toko, harga)
-      VALUES ('$total', '$namabarang', '$kategori', '$stok', '$penjual', '$toko', '$harga')";
+      VALUES ('$total', '$namabarang', '$kategori', '$stok', '$penjual', '$namatoko', '$harga')";
       if ($Koneksi->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('Anda berhasil menambahkan barang');</script>";
       } else {
         echo "<script type='text/javascript'>alert('Gagal menambahkan');</script>";
+        header("location:jualbarang.php?toko=$namatoko");
       }
 
       $Koneksi->close();
-        header("location:userPage.php");
+        header("location:barang.php?toko=$namatoko");
     }
 
     function hapusitem (){

@@ -40,10 +40,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
 			</div>
 			<div class="account_desc">
-				<ul>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="login.php">Login</a></li>
-				</ul>
+				<?php
+        session_start();
+
+        if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+          $sesi = $_SESSION['user'];
+     echo ('selamat datang, '.$sesi);
+     echo "<a href='logout.php'> <button type='button' class='btn btn-default btn-sm'>
+          <span class='glyphicon glyphicon-log-out'></span> Log out
+        </button> </a>";
+
+      }
+      else {
+        echo "<ul>
+					<li><a href='register.php'>Register</a></li>
+					<li><a href='login.php'>Login</a></li>
+				</ul>";
+      }
+         ?>
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -130,28 +144,28 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 			<?php
 			include("koneksi.php");
-			session_start();
 			if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 				echo "<br><br><br>Toko Anda<br>";
 
 				$pemilik = $_SESSION["user"];
-				$result   = mysqli_query($Koneksi, "select * FROM toko WHERE penjual = $pemilik");
+				$result   = mysqli_query($Koneksi, "select * FROM toko WHERE pemilik = '$pemilik'");
+				if (!$result) {
+    		die(mysqli_error($Koneksi));
 
-				if (mysqli_num_rows($result) > 0) {
-					$row = mysqli_fetch_object( $result );
-		      $total = $row->num_rows;
-					if (total>0){
-						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+	    	echo "Error";
+
+				}
+				else {
+					$row_cnt = $result->num_rows;
+					if ($row_cnt > 0){
 						$count = 0;
-						{
-							$tokonama = $row['namatoko'];
-
+						while ($row = $result->fetch_assoc()){
+							$shop = $row['namatoko'];
 			   		echo "<tr>";
-			   		echo "<td id = '$count'>".$row['namatoko']."</td>";
-						echo "<td><form action='barang.php'><input type='hidden' name='toko' value='$tokonama' />
-			 	    <button>Go to user 123</button>
-			 	</form></td>";
-
+						echo "<td>";
+						echo "<a href='barang.php?toko=$shop'><td id = '$count'>";
+						echo "{$row['namatoko']}";
+						echo "</td></a>";
 						$count++;
 						echo "<script>
 		$(document).ready(function(){
@@ -169,9 +183,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					}
 					else {
 						echo "Anda tidak memiliki toko, buat dahulu";
+						echo "<a href='tokobaru.php'>Buat Toko</a>";
+
 					}
-			} else {
-    	echo "Error";
 			}
 
 

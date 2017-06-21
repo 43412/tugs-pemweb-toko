@@ -127,21 +127,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 	  	     </div>
     	<div class="header_bottom_right">
-			<br><br><br>Jual Barang<br>
-			<table>
-				<br>
+				<?php
 
+				$shop = $_GET["toko"];
+				echo $shop;
+				echo "<br><br><br>Jual Barang<br>
+				<table>
+					<br>
 
-				<tr><td>Nama Barang</td><td><input name="Nama" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td>Kategori</td><td><input name="Nama" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td>Stok</td><td><input name="Nama" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>			
-				<tr><td>Harga</td><td><input name="Nama" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td></td><td><input value="Jual" type="submit"></td></tr>
-			</table>
+					<form action='jual-config.php?toko=$shop' role='form' class='form-horizontal' method='post'>
+					<tr><td>Nama Barang</td><td><input name='namabarang' type='text' value='' size='33' maxlength='30' /></td></tr>
+					<tr><td>&nbsp</td><td>&nbsp</td></tr>
+					<tr><td>Kategori</td><td><input name='kategori' type='text' value='' size='33' maxlength='30' /></td></tr>
+					<tr><td>&nbsp</td><td>&nbsp</td></tr>
+					<tr><td>Stok</td><td><input name='stok' type='text' value='' size='33' maxlength='30' /></td></tr>
+					<tr><td>&nbsp</td><td>&nbsp</td></tr>
+					<tr><td>Harga</td><td><input name='harga' type='text' value='' size='33' maxlength='30' /></td></tr>
+					<tr><td>&nbsp</td><td>&nbsp</td></tr>
+					<tr><td></td><td><input value='Jual' type='submit'></td></tr>
+				</form>
+				</table>";
+
+				 ?>
+
 	 </div>
 
 	    <script type="text/javascript">

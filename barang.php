@@ -127,34 +127,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 	  	     </div>
     	<div class="header_bottom_right">
-			<br><br><br>Toko Anda<br>
+			<br><br><br>Barang Anda<br>
       <?php
+			$toko = $_GET["toko"];
 			include("koneksi.php");
-			$pemilik = $_SESSION["user"];
-      $toko =  $_POST['toko'];
-			$result   = mysqli_query($Koneksi, "select * from barang WHERE toko = $toko");
-      $row = mysqli_fetch_object( $result );
-      $total = $row->num_rows;
-			if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-   echo ('Anda perlu login terlebih dahulu');
-		}
-		else{
-			if (total>0){
-				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-				$count = 0;
-				{
+			$result   = mysqli_query($Koneksi, "select * from barang WHERE toko = '$toko'");
+			if (!$result) {
+			die(mysqli_error($Koneksi));
 
+			echo "Error";
 
-	   		echo "<tr>";
-	   		echo "<td id = '$count'>".$row['namabarang']."</td>";
-
-	   		echo "</tr>";
-				}
 			}
 			else {
-				echo "Anda tidak memiliki barang, tambahkan dahulu";
-			}
+				$row_cnt = $result->num_rows;
+				if ($row_cnt > 0){
+					$count = 0;
+					while ($row = $result->fetch_assoc()){
+						$shop = $row['nama'];
+					echo "<tr>";
+					echo "<td>";
+					echo "{$row['nama']}";
+					echo "</td>";
+					$count++;
+					echo "<script>
+	$(document).ready(function(){
+			$('#$count').click(function(){
+
+					$(this).hide();
+			});
+	});
+	</script>";
+
+
+
+					echo "</tr>";
+					}
+				}
+				else {
+					echo "Anda tidak barang, tambahkan dahulu";
+					echo "<a href='jualbarang.php?toko=$toko'>Tambah barang</a>";
+
+				}
 		}
+
 
 			?>
 	 </div>
