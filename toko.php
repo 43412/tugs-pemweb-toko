@@ -41,15 +41,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="account_desc">
 				<ul>
-					<li><a href="register.html">Register</a></li>
-					<li><a href="login.html">Login</a></li>
+					<li><a href="register.php">Register</a></li>
+					<li><a href="login.php">Login</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				<a href="index.php"><img src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="cart">
 			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
@@ -90,9 +90,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li><a href="index.html">Home</a></li>
-			    	<li><a href="topup.html">Top Up</a></li>
-			    	<li><a href="contact.html">Contact Us</a></li>
+			    	<li><a href="index.php">Home</a></li>
+			    	<li><a href="topup.php">Top Up</a></li>
+			    	<li><a href="contact.php">Contact Us</a></li>
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
@@ -127,28 +127,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 	  	     </div>
     	<div class="header_bottom_right">
-			<br><br><br>Toko Anda<br>
+
 			<?php
 			include("koneksi.php");
-			$pemilik = $_SESSION["user"];
-			$result   = mysqli_query($Koneksi, "select * from toko WHERE pemilik = $pemilik");
-      $row = mysqli_fetch_object( $result );
-      $total = $row->num_rows;
+			session_start();
 			if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-   echo ('Anda perlu login terlebih dahulu');
+				echo "<br><br><br>Toko Anda<br>";
+
+				$pemilik = $_SESSION["user"];
+				$result   = mysqli_query($Koneksi, "select * FROM toko WHERE penjual = $pemilik");
+
+				if (mysqli_num_rows($result) > 0) {
+					$row = mysqli_fetch_object( $result );
+		      $total = $row->num_rows;
+					if (total>0){
+						while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+						$count = 0;
+						{
+							$tokonama = $row['namatoko'];
+
+			   		echo "<tr>";
+			   		echo "<td id = '$count'>".$row['namatoko']."</td>";
+						echo "<td><form action='barang.php'><input type='hidden' name='toko' value='$tokonama' />
+			 	    <button>Go to user 123</button>
+			 	</form></td>";
+
+						$count++;
+						echo "<script>
+		$(document).ready(function(){
+		    $('#$count').click(function(){
+
+		        $(this).hide();
+		    });
+		});
+		</script>";
+
+
+
+			   		echo "</tr>";
+						}
+					}
+					else {
+						echo "Anda tidak memiliki toko, buat dahulu";
+					}
+			} else {
+    	echo "Error";
+			}
+
+
+
 		}
 		else{
-			if (total>0){
-				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
-				{
-	   		echo "<tr>";
-	   		echo "<td>".$row['namatoko']."</td>";
-	   		echo "</tr>";
-				}
-			}
-			else {
-				echo "Anda tidak memiliki toko, buat dahulu";
-			}
+			echo ('Anda perlu login terlebih dahulu');
 		}
 
 			?>

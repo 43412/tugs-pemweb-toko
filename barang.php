@@ -41,15 +41,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="account_desc">
 				<ul>
-					<li><a href="register.php">Register</a></li>
-					<li><a href="login.php">Login</a></li>
+					<li><a href="register.html">Register</a></li>
+					<li><a href="login.html">Login</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.php"><img src="images/logo.png" alt="" /></a>
+				<a href="index.html"><img src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="cart">
 			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
@@ -127,31 +127,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 	  	     </div>
     	<div class="header_bottom_right">
-				<?php
-				if(isset($_POST['konfirmasi']) && !empty($_POST['konfirmasi'])) {
-				if ($_POST['konfirmasi'] = true){
-					echo "Berhasil register";
+			<br><br><br>Toko Anda<br>
+      <?php
+			include("koneksi.php");
+			$pemilik = $_SESSION["user"];
+      $toko =  $_POST['toko'];
+			$result   = mysqli_query($Koneksi, "select * from barang WHERE toko = $toko");
+      $row = mysqli_fetch_object( $result );
+      $total = $row->num_rows;
+			if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+   echo ('Anda perlu login terlebih dahulu');
+		}
+		else{
+			if (total>0){
+				while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+				$count = 0;
+				{
+
+
+	   		echo "<tr>";
+	   		echo "<td id = '$count'>".$row['namabarang']."</td>";
+
+	   		echo "</tr>";
 				}
-				else {
-					echo "gagal register";
-				}
-				}
-				?>
-			<br><br><br>Form Register<br>
-			<table>
-				<br>
-				<form action="register-config.php" role="form" class="form-horizontal" method="post">
-				<tr><td>Username</td><td><input name="username" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td>First Name</td><td><input name="firstname" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td>Last Name</td><td><input name="lastname" type="text" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td>Password</td><td><input name="password" type="password" value="" size="33" maxlength="30" /></td></tr>
-				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-				<tr><td></td><td><input value="Sign Up" type="submit"></td></tr>
-			</form>
-			</table>
+			}
+			else {
+				echo "Anda tidak memiliki barang, tambahkan dahulu";
+			}
+		}
+
+			?>
 	 </div>
 
 	    <script type="text/javascript">

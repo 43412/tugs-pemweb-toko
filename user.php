@@ -19,10 +19,10 @@ class userClass {
         $firstname = $user["first_name"];
         $lastname = $user["last_name"];
 
-        header("location:index.html");
+        header("location:index.php");
     }else{
         header("");
-            header("location:login.html");
+            header("location:login.php");
             echo "<script type='text/javascript'>alert('gagal');</script>";
 
     }
@@ -67,12 +67,15 @@ class userClass {
       VALUES ('$username', '$firstname', '$lastname', '$password', '$saldo')";
       if ($Koneksi->query($sql) === TRUE) {
         echo "<script type='text/javascript'>alert('Anda berhasil registrasi');</script>";
+        $_POST['konfirmasi'] = true;
       } else {
         echo "<script type='text/javascript'>alert('Gagal register');</script>";
+        $_POST['konfirmasi'] = false;
       }
 
       $Koneksi->close();
-        header("location:register.html");
+        header("location:register.php");
+
     }
     function hapustoko(){
       include("koneksi.php");

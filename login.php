@@ -41,15 +41,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="account_desc">
 				<ul>
-					<li><a href="register.html">Register</a></li>
-					<li><a href="login.html">Login</a></li>
+					<li><a href="register.php">Register</a></li>
+					<li><a href="login.php">Login</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				<a href="index.php"><img src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="cart">
 			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
@@ -90,7 +90,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li><a href="index.html">Home</a></li>
+			    	<li><a href="index.php">Home</a></li>
 			    	<li><a href="topup.html">Top Up</a></li>
 			    	<li><a href="contact.html">Contact Us</a></li>
 			    	<div class="clear"></div>
@@ -130,7 +130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<br><br><br>Form Login<br>
 			<table>
 				<br>
-				<form action="login.php" method="post">
+				<form action="login-config.php" method="post">
 				<tr><td>Username</td><td><input name="user" type="text" value="" size="33" maxlength="30" /></td></tr>
 				<tr><td>&nbsp</td><td>&nbsp</td></tr>
 				<tr><td>Password</td><td><input name="password" type="password" value="" size="33" maxlength="30" /></td></tr>

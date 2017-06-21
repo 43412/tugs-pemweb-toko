@@ -24,16 +24,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				 <p><span>Need help?</span> call us <span class="number">1-22-3456789</span></span></p>
 			</div>
 			<div class="account_desc">
-				<ul>
-					<li><a href="register.html">Register</a></li>
-					<li><a href="login.html">Login</a></li>
-				</ul>
+        <?php
+        session_start();
+
+        if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
+          $sesi = $_SESSION['user'];
+     echo ('selamat datang, '.$sesi);
+     echo "<a href='logout.php'> <button type='button' class='btn btn-default btn-sm'>
+          <span class='glyphicon glyphicon-log-out'></span> Log out
+        </button> </a>";
+
+      }
+      else {
+        echo "<ul>
+					<li><a href='register.php'>Register</a></li>
+					<li><a href='login.php'>Login</a></li>
+				</ul>";
+      }
+         ?>
+
+
 			</div>
 			<div class="clear"></div>
 		</div>
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				<a href="index.php"><img src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="cart">
 			  	   <p>Welcome to our Online Store! <span>Cart:</span><div id="dd" class="wrapper-dropdown-2"> 0 item(s) - $0.00
@@ -74,10 +90,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="header_bottom">
 	     	<div class="menu">
 	     		<ul>
-			    	<li class="active"><a href="index.html">Home</a></li>
-			    	<li><a href="topup.html">Top Up</a></li>
-            <li><a href="toko.html">Toko</a></li>
-			    	<li><a href="contact.html">Contact Us</a></li>
+			    	<li class="active"><a href="index.php">Home</a></li>
+			    	<li><a href="topup.php">Top Up</a></li>
+            <li><a href="toko.php">Toko</a></li>
+			    	<li><a href="contact.php">Contact Us</a></li>
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
@@ -114,7 +130,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			                    <div id="mover">
 			                    	<div id="slide-1" class="slide">
 									 <div class="slider-img">
-									     <a href="preview.html"><img src="images/slide-1-image.png" alt="learn more" /></a>
+									     <a href="preview.php"><img src="images/slide-1-image.png" alt="learn more" /></a>
 									  </div>
 						             	<div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>
@@ -122,7 +138,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									   <div class="features_list">
 									   	<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
 							            </div>
-							             <a href="preview.html" class="button">Shop Now</a>
+							             <a href="preview.php" class="button">Shop Now</a>
 					                   </div>
 									  <div class="clear"></div>
 				                  </div>
@@ -133,16 +149,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									   <div class="features_list">
 									   	<h4>Get to Know More About Our Memorable Services</h4>
 							            </div>
-							             <a href="preview.html" class="button">Shop Now</a>
+							             <a href="preview.php" class="button">Shop Now</a>
 					                   </div>
 						             	 <div class="slider-img">
-									     <a href="preview.html"><img src="images/slide-3-image.jpg" alt="learn more" /></a>
+									     <a href="preview.php"><img src="images/slide-3-image.jpg" alt="learn more" /></a>
 									  </div>
 									  <div class="clear"></div>
 				                  </div>
 				                  <div class="slide">
 					                  <div class="slider-img">
-									     <a href="preview.html"><img src="images/slide-2-image.jpg" alt="learn more" /></a>
+									     <a href="preview.php"><img src="images/slide-2-image.jpg" alt="learn more" /></a>
 									  </div>
 									  <div class="slider-text">
 		                                 <h1>Clearance<br><span>SALE</span></h1>
@@ -150,7 +166,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									   <div class="features_list">
 									   	<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
 							            </div>
-							             <a href="preview.html" class="button">Shop Now</a>
+							             <a href="preview.php" class="button">Shop Now</a>
 					                   </div>
 									  <div class="clear"></div>
 				                  </div>
@@ -175,55 +191,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	</div>
 	      <div class="section group">
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="images/feature-pic1.jpg" alt="" /></a>
+					 <a href="preview.php"><img src="images/feature-pic1.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					<div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$620.87</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
 
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/feature-pic2.jpg" alt="" /></a>
+					<a href="preview.php"><img src="images/feature-pic2.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					<div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$899.75</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
 
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/feature-pic3.jpg" alt="" /></a>
+					<a href="preview.php"><img src="images/feature-pic3.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$599.00</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/feature-pic4.jpg" alt="" /></a>
+					<a href="preview.php"><img src="images/feature-pic4.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					<div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$679.87</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
@@ -240,53 +256,53 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     	</div>
 			<div class="section group">
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.html"><img src="images/new-pic1.jpg" alt="" /></a>
+					 <a href="preview.php"><img src="images/new-pic1.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					<div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$849.99</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/new-pic2.jpg" alt="" /></a>
+					<a href="preview.php"><img src="images/new-pic2.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$599.99</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-					<a href="preview.html"><img src="images/new-pic4.jpg" alt="" /></a>
+					<a href="preview.php"><img src="images/new-pic4.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					<div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$799.99</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
 				</div>
 				<div class="grid_1_of_4 images_1_of_4">
-				 <a href="preview.html"><img src="images/new-pic3.jpg" alt="" /></a>
+				 <a href="preview.php"><img src="images/new-pic3.jpg" alt="" /></a>
 					 <h2>Lorem Ipsum is simply </h2>
 					 <div class="price-details">
 				       <div class="price-number">
 							<p><span class="rupees">$899.99</span></p>
 					    </div>
 					       		<div class="add-cart">
-									<h4><a href="preview.html">Add to Cart</a></h4>
+									<h4><a href="preview.php">Add to Cart</a></h4>
 							     </div>
 							 <div class="clear"></div>
 					</div>
