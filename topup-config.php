@@ -1,6 +1,7 @@
 <?php
 include("user.php");
 $userNow = new userClass ();
- $userNow->isisaldo();
+ $isisaldo = $_POST['isisaldo'];
+ $userNow->isisaldo($isisaldo);
 
  ?>

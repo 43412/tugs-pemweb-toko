@@ -116,7 +116,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
           <?php
           $kategori = $_GET['kategori'];
           include("koneksi.php");
-          $result   = mysqli_query($Koneksi, "select * FROM barang ");
+          $result   = mysqli_query($Koneksi, "select * FROM barang WHERE kategori = $kategori ");
           if (!$result) {
           die(mysqli_error($Koneksi));
           }

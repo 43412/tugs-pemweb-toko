@@ -89,7 +89,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <li><a href="topup.php">Top Up</a></li>
             <li><a href="toko.php">Toko</a></li>
 			    	<li><a href="contact.php">Contact Us</a></li>
-			    	<li class="active"><a href="contact.html">Contact Us</a></li>
+			    	<li class="active"><a href="contact.php">Contact Us</a></li>
 			    	<div class="clear"></div>
      			</ul>
 	     	</div>
@@ -107,7 +107,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<div class="col span_2_of_3">
 				  <div class="contact-form">
 				  	<h2>Contact Us</h2>
-					    <form method="post" action="contact-post.html">
+					    <form method="post" action="contact-post.php">
 					    	<div>
 						    	<span><label>Name</label></span>
 						    	<span><input name="userName" type="text" class="textbox" ></span>

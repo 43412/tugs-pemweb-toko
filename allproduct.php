@@ -103,19 +103,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
  <div class="main">
     <div class="content">
     	<div class="section group">
-        <table>
+        <table style="width:100%">
   				<br>
+          <tr>
+          <td>Nama barang</td>
+          <td>Kategori</td>
+          <td>Stok</td>
+          <td>Penjual</td>
+          <td>Harga</td>
+          <td>Toko</td>
+          <td>Beli</td>
+          </tr>
           <?php
-          if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
-            echo "<form action='topup-config.php' role='form' class='form-horizontal' method='post'>
-    				<tr><td>Masukkan jumlah top-up <br></td><td><input name='isisaldo' type='text' /></td></tr>
-    				<tr><td>&nbsp</td><td>&nbsp</td></tr>
-    				<tr><td></td><td><input value='Top-Up' type='submit'></td></tr>
-    				</form>";
+          include("koneksi.php");
+          $result   = mysqli_query($Koneksi, "select * FROM barang ");
+          if (!$result) {
+          die(mysqli_error($Koneksi));
           }
           else {
-            echo "Silahkan Login Dahulu";
-          }
+            $row_cnt = $result->num_rows;
+            if ($row_cnt > 0){
+              $count = 0;
+              while ($row = $result->fetch_assoc()){
+                echo "<tr>
+                <td>{$row['nama']}</td>
+                <td>{$row['kategori']}</td>
+                <td>{$row['stok']}</td>
+                <td>{$row['penjual']}</td>
+                <td>{$row['harga']}</td>
+                <td>{$row['toko']}</td>
+                <td>
+              <h4><a href='beli.php?id={$row['id']}'>Add to Cart</a></h4>
+               </td>
+                </tr>";
+
+              }
+            }
+
+        }
+
+
            ?>
 
 

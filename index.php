@@ -26,13 +26,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="account_desc">
         <?php
         session_start();
-
+        include("koneksi.php");
         if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
           $sesi = $_SESSION['user'];
+          $result   = mysqli_query($Koneksi, "select saldo from user where user='$sesi'");
+          $row      = mysqli_fetch_array($result);
+          $saldo = $row['saldo'];
+
      echo ('selamat datang, '.$sesi);
      echo "<a href='logout.php'> <button type='button' class='btn btn-default btn-sm'>
           <span class='glyphicon glyphicon-log-out'></span> Log out
-        </button> </a>";
+        </button> </a>
+        <br>
+        Saldo = $saldo";
 
       }
       else {
@@ -192,7 +198,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     		<h3>New Products</h3>
     		</div>
     		<div class="see">
-    			<p><a href="#">See all Products</a></p>
+    			<p><a href="allproduct.php">See all Products</a></p>
     		</div>
     		<div class="clear"></div>
     	</div>
@@ -218,7 +224,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       							<p><span class='rupees'>Rp. {$row['harga']}</span></p>
       					    </div>
       					       		<div class='add-cart'>
-      									<h4><a href='beli.php?={$row['id']}'>Add to Cart</a></h4>
+      									<h4><a href='beli.php?id={$row['id']}'>Add to Cart</a></h4>
       							     </div>
       							 <div class='clear'></div>
       					</div>
