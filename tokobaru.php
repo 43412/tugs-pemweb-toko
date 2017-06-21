@@ -41,15 +41,20 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="account_desc">
 				<?php
-
 				session_start();
-
+				include("koneksi.php");
 				if(isset($_SESSION['user']) && !empty($_SESSION['user'])) {
 					$sesi = $_SESSION['user'];
+					$result   = mysqli_query($Koneksi, "select saldo from user where user='$sesi'");
+					$row      = mysqli_fetch_array($result);
+					$saldo = $row['saldo'];
+
 		 echo ('selamat datang, '.$sesi);
 		 echo "<a href='logout.php'> <button type='button' class='btn btn-default btn-sm'>
 					<span class='glyphicon glyphicon-log-out'></span> Log out
-				</button> </a>";
+				</button> </a>
+				<br>
+				Saldo = $saldo";
 
 			}
 			else {

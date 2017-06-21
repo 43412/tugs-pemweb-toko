@@ -36,21 +36,7 @@ class userClass {
 
    }
 
-   function isisaldo ($saldo){
-     include("koneksi.php");
-    session_start();
-    $isisaldo = (int)$saldo;
-     $user = $_SESSION["user"];
-     if ($isisaldo>0){
-     $tambahsaldo = "UPDATE user SET saldo='$isisaldo' WHERE user='$user'";}
-     if ($Koneksi->query($tambahsaldo) === TRUE) {
-    echo "Berhasil menambahkan";
-      } else {
-    echo "Gagal menambahkan: ";
-      }
-      header("location:index.php");
 
-   }
 
    function belibarang (){
      include("koneksi.php");
